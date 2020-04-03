@@ -70,7 +70,7 @@ void MainWindow::on_pushButton_clicked()
 
     if (ok == false)
     {
-        QMessageBox::warning(this, QString::fromLocal8Bit("Авторизация"), QString::fromLocal8Bit("Вы не авторизовались!"));
+        QMessageBox::warning(this, QString::fromLocal8Bit("Авторизация_ИЗМЕНЕНИЕ"), QString::fromLocal8Bit("Вы не авторизовались!"));
     }
 
 
