@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->pass->setEchoMode(QLineEdit::Password);
     QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
-    db.setDatabaseName("libdatabase");
+    db.setDatabaseName("libdb");
     db.setHostName("");
     db.setUserName("userlibrary");
     db.setPassword("235973");
@@ -46,7 +46,7 @@ void MainWindow::on_pushButton_clicked()
     QString password = ui->pass->text();
 
     QSqlQuery query;
-    query.exec("SELECT * FROM passwords");
+    query.exec("SELECT * FROM verify");
     const int STR_EQUAL=0;
     bool ok = false;
 
@@ -70,7 +70,7 @@ void MainWindow::on_pushButton_clicked()
 
     if (ok == false)
     {
-        QMessageBox::warning(this, QString::fromLocal8Bit("Авторизация_ИЗМЕНЕНИЕ"), QString::fromLocal8Bit("Вы не авторизовались!"));
+        QMessageBox::warning(this, QString::fromLocal8Bit("Авторизация"), QString::fromLocal8Bit("Вы не авторизовались!"));
     }
 
 

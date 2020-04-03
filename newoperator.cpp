@@ -26,10 +26,11 @@ void NewOperator::on_pushButton_clicked()
 
     QSqlQuery query;
     QString qpass = QString::fromStdString(md5(password_db.toStdString()));
-    query.prepare("INSERT INTO passwords (login, password, name) VALUES (?, ?, ?)");
+    query.prepare("INSERT INTO verify (login, password, name, role) VALUES (?, ?, ?, ?)");
     query.addBindValue(login_db);
     query.addBindValue(qpass);
     query.addBindValue(name_db);
+    query.addBindValue("oper");
 
 
     if (!query.exec())
