@@ -21,6 +21,7 @@ SOURCES += \
     mainwindow.cpp \
     md5.cpp \
     newoperator.cpp \
+    newtype_of_obs.cpp \
     newvocabulary.cpp \
     secondwindow.cpp
 
@@ -28,6 +29,7 @@ HEADERS += \
     mainwindow.h \
     md5.h \
     newoperator.h \
+    newtype_of_obs.h \
     newvocabulary.h \
     secondwindow.h \
     sql.h
@@ -35,6 +37,7 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     newoperator.ui \
+    newtype_of_obs.ui \
     newvocabulary.ui \
     secondwindow.ui
 

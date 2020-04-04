@@ -2,6 +2,7 @@
 #include "ui_secondwindow.h"
 #include "newvocabulary.h"
 #include "newoperator.h"
+#include "newtype_of_obs.h"
 
 
 SecondWindow::SecondWindow(QWidget *parent) :
@@ -34,3 +35,12 @@ void SecondWindow::on_pushButton_3_clicked()
 
 
 
+
+void SecondWindow::on_pushButton_type_of_obs_clicked()
+{
+    newtype_of_obs windowNewObs;
+    windowNewObs.setWindowTitle(QString::fromLocal8Bit("Добавление нового вида наблюдения"));
+    windowNewObs.setModal(true);
+    windowNewObs.exec();
+
+}

@@ -24,8 +24,9 @@ void NewOperator::on_pushButton_clicked()
     QString password_db = ui->password->text();
     QString name_db = ui->name->text();
 
-    QSqlQuery query;
+
     QString qpass = QString::fromStdString(md5(password_db.toStdString()));
+    QSqlQuery query;
     query.prepare("INSERT INTO verify (login, password, name, role) VALUES (?, ?, ?, ?)");
     query.addBindValue(login_db);
     query.addBindValue(qpass);
