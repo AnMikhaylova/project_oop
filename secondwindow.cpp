@@ -3,6 +3,7 @@
 #include "newvocabulary.h"
 #include "newoperator.h"
 #include "newtype_of_obs.h"
+#include "newdiscipline.h"
 
 
 SecondWindow::SecondWindow(QWidget *parent) :
@@ -43,4 +44,12 @@ void SecondWindow::on_pushButton_type_of_obs_clicked()
     windowNewObs.setModal(true);
     windowNewObs.exec();
 
+}
+
+void SecondWindow::on_pushButton_discip_clicked()
+{
+    NewDiscipline windowNewDiscipline;
+    windowNewDiscipline.setWindowTitle(QString::fromLocal8Bit("Добавление новой дисциплины"));
+    windowNewDiscipline.setModal(true);
+    windowNewDiscipline.exec();
 }

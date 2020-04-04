@@ -22,6 +22,8 @@ private slots:
 
     void on_pushButton_type_of_obs_clicked();
 
+    void on_pushButton_discip_clicked();
+
 private:
     Ui::SecondWindow *ui;
 };

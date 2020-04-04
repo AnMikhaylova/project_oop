@@ -20,6 +20,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     md5.cpp \
+    newdiscipline.cpp \
     newoperator.cpp \
     newtype_of_obs.cpp \
     newvocabulary.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 HEADERS += \
     mainwindow.h \
     md5.h \
+    newdiscipline.h \
     newoperator.h \
     newtype_of_obs.h \
     newvocabulary.h \
@@ -36,6 +38,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
+    newdiscipline.ui \
     newoperator.ui \
     newtype_of_obs.ui \
     newvocabulary.ui \
