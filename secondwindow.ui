@@ -61,53 +61,63 @@
        <property name="title">
         <string>Словари</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>26</y>
-          <width>190</width>
-          <height>100</height>
+          <width>192</width>
+          <height>136</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="QPushButton" name="pushButton_2">
-             <property name="text">
-              <string>редактирование словарей</string>
-             </property>
-            </widget>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="text">
+                <string>редактирование словарей</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_discip">
+               <property name="text">
+                <string>добавление дисциплины</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_discip">
+            <widget class="QPushButton" name="pushButton_type_of_obs">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="text">
-              <string>добавление дисциплины</string>
+              <string>добавление вида наблюдения</string>
              </property>
             </widget>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_type_of_obs">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
+          <widget class="QPushButton" name="option">
            <property name="text">
-            <string>добавление вида наблюдения</string>
+            <string>добавление параметра</string>
            </property>
           </widget>
          </item>
         </layout>
-        <zorder>pushButton_type_of_obs</zorder>
        </widget>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="operator_2">
      <property name="text">
       <string>регистрация новых операторов</string>
      </property>

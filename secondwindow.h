@@ -16,13 +16,13 @@ public:
     ~SecondWindow();
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_3_clicked();
+    void on_pushButton_operator_clicked();
 
     void on_pushButton_type_of_obs_clicked();
 
     void on_pushButton_discip_clicked();
+
+    void on_option_clicked();
 
 private:
     Ui::SecondWindow *ui;

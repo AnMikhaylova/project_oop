@@ -3,6 +3,7 @@
 #include "QMessageBox"
 #include "QTextCodec"
 #include "secondwindow.h"
+#include "secondwindowoper.h"
 #include <QTextStream>
 #include <QString>
 #include "md5.h"
@@ -55,13 +56,26 @@ void MainWindow::on_pushButton_clicked()
         if((QString::compare(login, query.value(1).toString(), Qt::CaseInsensitive) == STR_EQUAL) &&
                 (md5(password.toStdString()) == query.value(2).toString().toStdString()))
         {
+            if(query.value(4).toString().toStdString()=="adm")
 
-            hide();
-            SecondWindow window;
-            window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
-            window.setModal(true);
-            window.exec();
-            ok = true;
+            {
+                hide();
+                SecondWindow window;
+                window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
+                window.setModal(true);
+                window.exec();
+                ok = true;
+            }
+
+            if (query.value(4).toString().toStdString()=="oper")
+            {
+                hide();
+                SecondWindowOper window;
+                window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
+                window.setModal(true);
+                window.exec();
+                ok = true;
+            }
 
 
         }

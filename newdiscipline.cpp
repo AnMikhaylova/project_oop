@@ -2,11 +2,21 @@
 #include "ui_newdiscipline.h"
 #include <QTextCodec>
 
+
 NewDiscipline::NewDiscipline(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewDiscipline)
 {
     ui->setupUi(this);
+    QSqlQuery query;
+    query.exec("SELECT * FROM disciplines" );
+    while (query.next())
+    {
+        ui->listWidget->addItem(query.value(1).toString());
+
+    }
+
+
 }
 
 NewDiscipline::~NewDiscipline()
@@ -21,6 +31,7 @@ void NewDiscipline::on_pushButton_clicked()
     QSqlQuery query;
     query.prepare("INSERT INTO disciplines (d_name) VALUES (?)");
     query.addBindValue(discip_name);
+
     if (!query.exec())
     {
         QMessageBox::warning(this, "Error", query.lastError().text());
@@ -30,4 +41,5 @@ void NewDiscipline::on_pushButton_clicked()
 
         QMessageBox::information(this, "OK", "Successfull!");
     }
+
 }

@@ -4,6 +4,7 @@
 #include "newoperator.h"
 #include "newtype_of_obs.h"
 #include "newdiscipline.h"
+#include "newoption.h"
 
 
 SecondWindow::SecondWindow(QWidget *parent) :
@@ -18,15 +19,9 @@ SecondWindow::~SecondWindow()
     delete ui;
 }
 
-void SecondWindow::on_pushButton_clicked()
-{
-    NewVocabulary windowNewVocabluary;
-    windowNewVocabluary.setWindowTitle(QString::fromLocal8Bit("Добавление нового словаря"));
-    windowNewVocabluary.setModal(true);
-    windowNewVocabluary.exec();
-}
 
-void SecondWindow::on_pushButton_3_clicked()
+
+void SecondWindow::on_pushButton_operator_clicked()
 {
     NewOperator windowNewOperator;
     windowNewOperator.setWindowTitle(QString::fromLocal8Bit("Добавление нового оператора"));
@@ -52,4 +47,12 @@ void SecondWindow::on_pushButton_discip_clicked()
     windowNewDiscipline.setWindowTitle(QString::fromLocal8Bit("Добавление новой дисциплины"));
     windowNewDiscipline.setModal(true);
     windowNewDiscipline.exec();
+}
+
+void SecondWindow::on_option_clicked()
+{
+    NewOption windowNewOption;
+    windowNewOption.setWindowTitle(QString::fromLocal8Bit("Добавление нового параметра"));
+    windowNewOption.setModal(true);
+    windowNewOption.exec();
 }

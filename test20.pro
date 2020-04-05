@@ -22,27 +22,33 @@ SOURCES += \
     md5.cpp \
     newdiscipline.cpp \
     newoperator.cpp \
+    newoption.cpp \
     newtype_of_obs.cpp \
     newvocabulary.cpp \
-    secondwindow.cpp
+    secondwindow.cpp \
+    secondwindowoper.cpp
 
 HEADERS += \
     mainwindow.h \
     md5.h \
     newdiscipline.h \
     newoperator.h \
+    newoption.h \
     newtype_of_obs.h \
     newvocabulary.h \
     secondwindow.h \
+    secondwindowoper.h \
     sql.h
 
 FORMS += \
     mainwindow.ui \
     newdiscipline.ui \
     newoperator.ui \
+    newoption.ui \
     newtype_of_obs.ui \
     newvocabulary.ui \
-    secondwindow.ui
+    secondwindow.ui \
+    secondwindowoper.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
