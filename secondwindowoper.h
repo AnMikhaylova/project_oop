@@ -15,6 +15,14 @@ public:
     explicit SecondWindowOper(QWidget *parent = nullptr);
     ~SecondWindowOper();
 
+private slots:
+
+    void on_pushButton_discip_oper_clicked();
+
+    void on_pushButton_type_of_obs_oper_clicked();
+
+    void on_pushButton_option_oper_clicked();
+
 private:
     Ui::SecondWindowOper *ui;
 };

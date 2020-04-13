@@ -20,18 +20,6 @@ SecondWindow::~SecondWindow()
 }
 
 
-
-void SecondWindow::on_pushButton_operator_clicked()
-{
-    NewOperator windowNewOperator;
-    windowNewOperator.setWindowTitle(QString::fromLocal8Bit("Добавление нового оператора"));
-    windowNewOperator.setModal(true);
-    windowNewOperator.exec();
-}
-
-
-
-
 void SecondWindow::on_pushButton_type_of_obs_clicked()
 {
     newtype_of_obs windowNewObs;
@@ -55,4 +43,13 @@ void SecondWindow::on_option_clicked()
     windowNewOption.setWindowTitle(QString::fromLocal8Bit("Добавление нового параметра"));
     windowNewOption.setModal(true);
     windowNewOption.exec();
+}
+
+
+void SecondWindow::on_operator_2_clicked()
+{
+    NewOperator windowNewOperator;
+    windowNewOperator.setWindowTitle(QString::fromLocal8Bit("Добавление нового оператора"));
+    windowNewOperator.setModal(true);
+    windowNewOperator.exec();
 }

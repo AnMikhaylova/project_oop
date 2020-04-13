@@ -15,6 +15,7 @@ NewDiscipline::NewDiscipline(QWidget *parent) :
         ui->listWidget->addItem(query.value(1).toString());
 
     }
+    ui->pushButton->setShortcut(Qt::Key_Return);
 
 
 }

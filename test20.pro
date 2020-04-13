@@ -21,6 +21,7 @@ SOURCES += \
     mainwindow.cpp \
     md5.cpp \
     newdiscipline.cpp \
+    newmeta.cpp \
     newoperator.cpp \
     newoption.cpp \
     newtype_of_obs.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     mainwindow.h \
     md5.h \
     newdiscipline.h \
+    newmeta.h \
     newoperator.h \
     newoption.h \
     newtype_of_obs.h \
@@ -43,6 +45,7 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     newdiscipline.ui \
+    newmeta.ui \
     newoperator.ui \
     newoption.ui \
     newtype_of_obs.ui \

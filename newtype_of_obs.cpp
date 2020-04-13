@@ -14,6 +14,7 @@ newtype_of_obs::newtype_of_obs(QWidget *parent) :
     {
     ui->comboBox->addItem(query.value(1).toString());
     }
+    ui->pushButton_2->setShortcut(Qt::Key_Return);
 }
 
 newtype_of_obs::~newtype_of_obs()

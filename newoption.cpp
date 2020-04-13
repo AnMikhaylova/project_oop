@@ -15,6 +15,7 @@ NewOption::NewOption(QWidget *parent) :
     {
     ui->comboBox_discipline->addItem(query.value(1).toString());
     }
+    ui->pushButton_2->setShortcut(Qt::Key_Return);
 }
 
 NewOption::~NewOption()

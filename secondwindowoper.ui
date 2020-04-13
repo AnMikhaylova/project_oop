@@ -65,7 +65,7 @@
    <property name="title">
     <string>Словари</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -83,14 +83,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_discip">
+      <widget class="QPushButton" name="pushButton_discip_oper">
        <property name="text">
         <string>добавление дисциплины</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_type_of_obs">
+      <widget class="QPushButton" name="pushButton_type_of_obs_oper">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -100,7 +100,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_option_oper">
        <property name="text">
         <string>добавление параметра</string>
        </property>

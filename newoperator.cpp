@@ -10,6 +10,7 @@ NewOperator::NewOperator(QWidget *parent) :
     ui(new Ui::NewOperator)
 {
     ui->setupUi(this);
+    ui->pushButton->setShortcut(Qt::Key_Return);
 }
 
 NewOperator::~NewOperator()

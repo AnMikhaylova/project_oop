@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
         exit(2);
     }
     QMessageBox::information(this, "OK", QString::fromLocal8Bit("PostgreSQL успешно подключен!"));// Как оповещение о успехе подключения
+    ui->pushButton->setShortcut(Qt::Key_Return);
 
 }
 
