@@ -26,7 +26,6 @@ SOURCES += \
     newoperator.cpp \
     newoption.cpp \
     newtype_of_obs.cpp \
-    newvocabulary.cpp \
     secondwindow.cpp \
     secondwindowoper.cpp
 
@@ -39,7 +38,6 @@ HEADERS += \
     newoperator.h \
     newoption.h \
     newtype_of_obs.h \
-    newvocabulary.h \
     secondwindow.h \
     secondwindowoper.h \
     sql.h
@@ -52,7 +50,6 @@ FORMS += \
     newoperator.ui \
     newoption.ui \
     newtype_of_obs.ui \
-    newvocabulary.ui \
     secondwindow.ui \
     secondwindowoper.ui
 
