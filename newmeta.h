@@ -12,11 +12,18 @@ class NewMeta : public QDialog
     Q_OBJECT
 
 public:
-    explicit NewMeta(QWidget *parent = nullptr);
+    explicit NewMeta(QWidget *parent = nullptr, QString name = "");
     ~NewMeta();
 
+private slots:
+    void on_pushButton_discip_clicked();
+
+    void on_pushButton_obs_clicked();
+
 private:
+    QString user_name;
     Ui::NewMeta *ui;
+
 };
 
 #endif // NEWMETA_H

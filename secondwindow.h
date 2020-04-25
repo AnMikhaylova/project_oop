@@ -12,7 +12,7 @@ class SecondWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit SecondWindow(QWidget *parent = nullptr);
+    explicit SecondWindow(QWidget *parent = nullptr, QString name = "");
     ~SecondWindow();
 
 private slots:
@@ -25,8 +25,12 @@ private slots:
 
     void on_operator_2_clicked();
 
+    void on_new_meta_clicked();
+
 private:
+    QString user_name;
     Ui::SecondWindow *ui;
+
 };
 
 #endif // SECONDWINDOW_H

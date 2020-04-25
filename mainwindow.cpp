@@ -7,8 +7,11 @@
 #include <QTextStream>
 #include <QString>
 #include "md5.h"
+#include "sql.h"
 
 using namespace std;
+
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -39,6 +42,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QString MainWindow::get_username() const
+{
+    return user_name;
+}
+
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -57,11 +65,14 @@ void MainWindow::on_pushButton_clicked()
         if((QString::compare(login, query.value(1).toString(), Qt::CaseInsensitive) == STR_EQUAL) &&
                 (md5(password.toStdString()) == query.value(2).toString().toStdString()))
         {
+            user_name = query.value(3).toString();
+
             if(query.value(4).toString().toStdString()=="adm")
 
             {
+
                 hide();
-                SecondWindow window;
+                SecondWindow window(this, user_name);
                 window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
                 window.setModal(true);
                 window.exec();
@@ -70,6 +81,7 @@ void MainWindow::on_pushButton_clicked()
 
             if (query.value(4).toString().toStdString()=="oper")
             {
+
                 hide();
                 SecondWindowOper window;
                 window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
@@ -90,3 +102,5 @@ void MainWindow::on_pushButton_clicked()
 
 
 }
+
+

@@ -5,10 +5,11 @@
 #include "newtype_of_obs.h"
 #include "newdiscipline.h"
 #include "newoption.h"
+#include "newmeta.h"
 
 
-SecondWindow::SecondWindow(QWidget *parent) :
-    QDialog(parent),
+SecondWindow::SecondWindow(QWidget *parent, QString name ) :
+    QDialog(parent), user_name(name),
     ui(new Ui::SecondWindow)
 {
     ui->setupUi(this);
@@ -52,4 +53,12 @@ void SecondWindow::on_operator_2_clicked()
     windowNewOperator.setWindowTitle(QString::fromLocal8Bit("Добавление нового оператора"));
     windowNewOperator.setModal(true);
     windowNewOperator.exec();
+}
+
+void SecondWindow::on_new_meta_clicked()
+{
+    NewMeta windowNewMeta(this, user_name);
+    windowNewMeta.setWindowTitle(QString::fromLocal8Bit("Добавление нового оператора"));
+    windowNewMeta.setModal(true);
+    windowNewMeta.exec();
 }

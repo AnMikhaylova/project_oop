@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    editvocabulary.cpp \
     main.cpp \
     mainwindow.cpp \
     md5.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
     secondwindowoper.cpp
 
 HEADERS += \
+    editvocabulary.h \
     mainwindow.h \
     md5.h \
     newdiscipline.h \
@@ -43,6 +45,7 @@ HEADERS += \
     sql.h
 
 FORMS += \
+    editvocabulary.ui \
     mainwindow.ui \
     newdiscipline.ui \
     newmeta.ui \
