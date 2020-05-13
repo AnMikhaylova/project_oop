@@ -2,6 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "QMessageBox"
+#include "QTextCodec"
+#include "secondwindow.h"
+#include "secondwindowoper.h"
+#include <QTextStream>
+#include <QString>
+#include "md5.h"
+#include "sql.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

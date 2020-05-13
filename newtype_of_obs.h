@@ -24,6 +24,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+    QString d_id;
     Ui::newtype_of_obs *ui;
 };
 

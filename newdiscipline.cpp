@@ -1,6 +1,5 @@
 #include "newdiscipline.h"
 #include "ui_newdiscipline.h"
-#include <QTextCodec>
 
 
 NewDiscipline::NewDiscipline(QWidget *parent) :

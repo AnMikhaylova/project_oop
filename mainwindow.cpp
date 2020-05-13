@@ -1,17 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "QMessageBox"
-#include "QTextCodec"
-#include "secondwindow.h"
-#include "secondwindowoper.h"
-#include <QTextStream>
-#include <QString>
-#include "md5.h"
-#include "sql.h"
-
-using namespace std;
-
-
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -29,10 +17,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     if (!db.open())
     {
-        QMessageBox::warning(this, "Error", db.lastError().text());// Как оповещение о неудаче
+        QMessageBox::warning(this, "Error", db.lastError().text());
         exit(2);
     }
-    QMessageBox::information(this, "OK", QString::fromLocal8Bit("PostgreSQL успешно подключен!"));// Как оповещение о успехе подключения
+    QMessageBox::information(this, "OK", QString::fromLocal8Bit("PostgreSQL успешно подключен!"));
     ui->pushButton->setShortcut(Qt::Key_Return);
 
 }
@@ -95,7 +83,7 @@ void MainWindow::on_pushButton_clicked()
 
     }
 
-    if (ok == false)
+    if (!ok)
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Авторизация"), QString::fromLocal8Bit("Вы не авторизовались!"));
     }

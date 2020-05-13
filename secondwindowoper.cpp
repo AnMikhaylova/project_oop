@@ -1,8 +1,5 @@
 #include "secondwindowoper.h"
 #include "ui_secondwindowoper.h"
-#include "newdiscipline.h"
-#include "newtype_of_obs.h"
-#include "newoption.h"
 
 SecondWindowOper::SecondWindowOper(QWidget *parent) :
     QDialog(parent),

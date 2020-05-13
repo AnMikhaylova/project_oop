@@ -1,6 +1,6 @@
 #include "newtype_of_obs.h"
 #include "ui_newtype_of_obs.h"
-QString d_id;
+
 
 
 newtype_of_obs::newtype_of_obs(QWidget *parent) :

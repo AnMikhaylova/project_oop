@@ -1,9 +1,5 @@
 #include "newoperator.h"
 #include "ui_newoperator.h"
-#include <QTextCodec>
-#include "sql.h"
-#include <QMessageBox>
-#include "md5.h"
 
 NewOperator::NewOperator(QWidget *parent) :
     QDialog(parent),

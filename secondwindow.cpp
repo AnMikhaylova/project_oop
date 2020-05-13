@@ -1,11 +1,5 @@
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
-#include "newvocabulary.h"
-#include "newoperator.h"
-#include "newtype_of_obs.h"
-#include "newdiscipline.h"
-#include "newoption.h"
-#include "newmeta.h"
 
 
 SecondWindow::SecondWindow(QWidget *parent, QString name ) :

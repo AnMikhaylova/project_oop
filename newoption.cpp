@@ -1,8 +1,6 @@
 #include "newoption.h"
 #include "ui_newoption.h"
-#include "sql.h"
-#include <QTextCodec>
-QString obs_id;
+
 
 NewOption::NewOption(QWidget *parent) :
     QDialog(parent),

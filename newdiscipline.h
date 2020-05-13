@@ -2,6 +2,7 @@
 #define NEWDISCIPLINE_H
 
 #include <QDialog>
+#include <QTextCodec>
 #include "sql.h"
 
 namespace Ui {

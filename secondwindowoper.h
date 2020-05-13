@@ -2,6 +2,9 @@
 #define SECONDWINDOWOPER_H
 
 #include <QDialog>
+#include "newdiscipline.h"
+#include "newtype_of_obs.h"
+#include "newoption.h"
 
 namespace Ui {
 class SecondWindowOper;

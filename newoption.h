@@ -2,6 +2,8 @@
 #define NEWOPTION_H
 
 #include <QDialog>
+#include "sql.h"
+#include <QTextCodec>
 
 namespace Ui {
 class NewOption;
@@ -25,6 +27,7 @@ private slots:
     void on_obs_clicked();
 
 private:
+    QString obs_id;
     Ui::NewOption *ui;
 };
 

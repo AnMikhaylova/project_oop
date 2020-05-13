@@ -3,6 +3,11 @@
 
 #include <QDialog>
 
+#include <QTextCodec>
+#include "sql.h"
+#include <QMessageBox>
+#include "md5.h"
+
 namespace Ui {
 class NewOperator;
 }
