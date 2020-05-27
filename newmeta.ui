@@ -341,12 +341,16 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLineEdit" name="lineEdit_4"/>
-         </item>
-         <item>
           <widget class="QPushButton" name="choose">
            <property name="text">
             <string>Выбрать</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_directory">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>

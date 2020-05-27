@@ -56,3 +56,11 @@ void SecondWindow::on_new_meta_clicked()
     windowNewMeta.setModal(true);
     windowNewMeta.exec();
 }
+
+void SecondWindow::on_pushButton_2_clicked()
+{
+    EditVocabulary windowEditVocabulary;
+    windowEditVocabulary.setWindowTitle(QString::fromLocal8Bit("Редактирвоание словарей"));
+    windowEditVocabulary.setModal(true);
+    windowEditVocabulary.exec();
+}

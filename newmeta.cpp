@@ -180,7 +180,7 @@ void NewMeta::on_add_db_clicked()
 
 void NewMeta::on_choose_clicked()
 {
-    directory = "A:/work directory/file1.pdf";
+
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                       "/home",
                                                       tr("PDF doc (*.pdf)"));
@@ -193,6 +193,8 @@ void NewMeta::on_choose_clicked()
                 return;
             }
     }
+    QFileInfo fileInfo(fileName);
+    directory = QString("A:/work directory/") + fileInfo.fileName();
 
     bool open = QFile::copy(fileName, directory);
     if (!open)

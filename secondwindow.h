@@ -7,6 +7,7 @@
 #include "newdiscipline.h"
 #include "newoption.h"
 #include "newmeta.h"
+#include "editvocabulary.h"
 
 namespace Ui {
 class SecondWindow;
@@ -31,6 +32,8 @@ private slots:
     void on_operator_2_clicked();
 
     void on_new_meta_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     QString user_name;
