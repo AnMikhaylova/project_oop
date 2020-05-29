@@ -71,7 +71,7 @@ void MainWindow::on_pushButton_clicked()
             {
 
                 hide();
-                SecondWindowOper window;
+                SecondWindowOper window(this, user_name);
                 window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
                 window.setModal(true);
                 window.exec();

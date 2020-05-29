@@ -164,6 +164,20 @@ void NewMeta::on_add_db_clicked()
     query1.addBindValue(last_modif_date);
     query1.addBindValue(directory);
 
+    QFileInfo fileInfo(file);
+    directory = QString("A:/work directory/") + fileInfo.fileName();
+
+    bool open = QFile::copy(file, directory);
+    if (!open)
+    {
+        QMessageBox::warning(this, "Error", "Could not copy file");
+    }
+    else
+    {
+
+         QMessageBox::information(this, "OK", "Successfull copy!");
+    }
+
 
     if (!query1.exec())
     {
@@ -172,7 +186,7 @@ void NewMeta::on_add_db_clicked()
     else
     {
 
-        QMessageBox::information(this, "OK", "Successfull!");
+         QMessageBox::information(this, "OK", "Successfull add!");
     }
 
 
@@ -186,22 +200,20 @@ void NewMeta::on_choose_clicked()
                                                       tr("PDF doc (*.pdf)"));
     if (fileName != "")
     {
-            QFile file(fileName);
-            if (!file.open(QIODevice::ReadOnly))
-            {
-                QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
-                return;
-            }
-    }
-    QFileInfo fileInfo(fileName);
-    directory = QString("A:/work directory/") + fileInfo.fileName();
 
-    bool open = QFile::copy(fileName, directory);
-    if (!open)
-    {
-        QMessageBox::warning(this, "Error", directory);
-    }
+        QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly))
+        {
+            QMessageBox::critical(this, "Error", "Could not open file");
+        }
+        else
+        {
+            QMessageBox::information(this, "OK", "Successfull open!");
+            ui->label_directory->setText(fileName);
+            this->file = fileName;
 
+        }
+    }
 
 
 }

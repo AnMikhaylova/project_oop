@@ -52,7 +52,7 @@ void SecondWindow::on_operator_2_clicked()
 void SecondWindow::on_new_meta_clicked()
 {
     NewMeta windowNewMeta(this, user_name);
-    windowNewMeta.setWindowTitle(QString::fromLocal8Bit("Добавление нового оператора"));
+    windowNewMeta.setWindowTitle(QString::fromLocal8Bit("Добавление нового мета-описания"));
     windowNewMeta.setModal(true);
     windowNewMeta.exec();
 }
@@ -63,4 +63,12 @@ void SecondWindow::on_pushButton_2_clicked()
     windowEditVocabulary.setWindowTitle(QString::fromLocal8Bit("Редактирвоание словарей"));
     windowEditVocabulary.setModal(true);
     windowEditVocabulary.exec();
+}
+
+void SecondWindow::on_meta_clicked()
+{
+    Meta windowMeta(this, user_name);
+    windowMeta.setWindowTitle(QString::fromLocal8Bit("Редактирование и удаление мета-опсианий"));
+    windowMeta.setModal(true);
+    windowMeta.exec();
 }

@@ -30,7 +30,8 @@ private slots:
     void on_choose_clicked();
 
 private:
-    QString user_name, d_id, obs_id, op_id, lng_id, cntr_id, v_id, access, prod_method, meta_creation_date, last_modif_date, directory;
+    QString user_name, d_id, obs_id, op_id, lng_id, cntr_id, v_id, access,
+    prod_method, meta_creation_date, last_modif_date, directory, file;
     Ui::NewMeta *ui;
 
 };

@@ -21,6 +21,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     md5.cpp \
+    meta.cpp \
     newdiscipline.cpp \
     newmeta.cpp \
     newoperator.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     editvocabulary.h \
     mainwindow.h \
     md5.h \
+    meta.h \
     newdiscipline.h \
     newmeta.h \
     newoperator.h \
@@ -45,6 +47,7 @@ HEADERS += \
 FORMS += \
     editvocabulary.ui \
     mainwindow.ui \
+    meta.ui \
     newdiscipline.ui \
     newmeta.ui \
     newoperator.ui \

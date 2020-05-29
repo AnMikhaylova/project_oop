@@ -7,6 +7,7 @@
 #include "newdiscipline.h"
 #include "newoption.h"
 #include "newmeta.h"
+#include "meta.h"
 #include "editvocabulary.h"
 
 namespace Ui {
@@ -34,6 +35,8 @@ private slots:
     void on_new_meta_clicked();
 
     void on_pushButton_2_clicked();
+
+    void on_meta_clicked();
 
 private:
     QString user_name;

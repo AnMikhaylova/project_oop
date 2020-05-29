@@ -29,23 +29,16 @@
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="new_meta">
         <property name="text">
          <string>добавление мета-описаний</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="meta">
         <property name="text">
-         <string>редактирование мета-описаний</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton_6">
-        <property name="text">
-         <string>удаление мета-описаний</string>
+         <string>редактирование/удаления мета-описаний</string>
         </property>
        </widget>
       </item>
