@@ -60,10 +60,11 @@ void MainWindow::on_pushButton_clicked()
             {
 
                 hide();
-                SecondWindow window(this, user_name);
-                window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
-                window.setModal(true);
-                window.exec();
+                window = new WorkWindowAdm(nullptr,user_name);
+                window->setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
+                window->show();
+//                window.setModal(true);
+//                window.exec();
                 ok = true;
             }
 
@@ -71,13 +72,11 @@ void MainWindow::on_pushButton_clicked()
             {
 
                 hide();
-                SecondWindowOper window(this, user_name);
-                window.setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
-                window.setModal(true);
-                window.exec();
+                window_op = new WorkWindowOper(nullptr,user_name);
+                window_op->setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
+                window_op->show();
                 ok = true;
             }
-
 
         }
 

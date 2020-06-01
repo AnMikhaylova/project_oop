@@ -2,7 +2,7 @@
 #define NEWOPERATOR_H
 
 #include <QDialog>
-
+#include <QFlag>
 #include <QTextCodec>
 #include "sql.h"
 #include <QMessageBox>

@@ -27,8 +27,8 @@ SOURCES += \
     newoperator.cpp \
     newoption.cpp \
     newtype_of_obs.cpp \
-    secondwindow.cpp \
-    secondwindowoper.cpp
+    workwindowadm.cpp \
+    workwindowoper.cpp
 
 HEADERS += \
     editvocabulary.h \
@@ -40,9 +40,9 @@ HEADERS += \
     newoperator.h \
     newoption.h \
     newtype_of_obs.h \
-    secondwindow.h \
-    secondwindowoper.h \
-    sql.h
+    sql.h \
+    workwindowadm.h \
+    workwindowoper.h
 
 FORMS += \
     editvocabulary.ui \
@@ -53,8 +53,8 @@ FORMS += \
     newoperator.ui \
     newoption.ui \
     newtype_of_obs.ui \
-    secondwindow.ui \
-    secondwindowoper.ui
+    workwindowadm.ui \
+    workwindowoper.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

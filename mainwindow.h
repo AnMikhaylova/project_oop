@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include "QMessageBox"
 #include "QTextCodec"
-#include "secondwindow.h"
-#include "secondwindowoper.h"
+#include "workwindowadm.h"
+#include "workwindowoper.h"
 #include <QTextStream>
 #include <QString>
 #include "md5.h"
@@ -30,5 +30,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString user_name;
+    WorkWindowAdm *window;
+    WorkWindowOper *window_op;
 };
 #endif // MAINWINDOW_H
