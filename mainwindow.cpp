@@ -63,8 +63,6 @@ void MainWindow::on_pushButton_clicked()
                 window = new WorkWindowAdm(nullptr,user_name);
                 window->setWindowTitle(QString::fromLocal8Bit("Работа с данными"));
                 window->show();
-//                window.setModal(true);
-//                window.exec();
                 ok = true;
             }
 

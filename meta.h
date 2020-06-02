@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "sql.h"
+#include "classmeta.h"
+#include "editmeta.h"
 
 namespace Ui {
 class Meta;
@@ -21,9 +23,14 @@ private slots:
 
     void on_pushButton_choose_clicked();
 
+    void on_pushButton_edit_clicked();
+
 private:
     QString user_name, delete_meta;
+    ClassMeta *NewMeta;
+    EditMeta *windowEditMeta;
     Ui::Meta *ui;
+
 };
 
 #endif // META_H

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditMeta</class>
+ <widget class="QDialog" name="EditMeta">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>727</width>
+    <height>599</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>681</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Мета-описание</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>321</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>удк</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="udc"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>инвентарный номер*</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="invent_num"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>название книги</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="title"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>дисциплина*</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="discip"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="pushButton_discip">
+       <property name="text">
+        <string>Выбрать</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>вид наблюдений*</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="type_of_obs"/>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPushButton" name="pushButton_obs">
+       <property name="text">
+        <string>Выбрать</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>параметр*</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="option"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>авторский знак</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="cop_mark"/>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>авторы/редакторы</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLineEdit" name="authors"/>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>язык издания</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QComboBox" name="publ_lng"/>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>страна</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QComboBox" name="cntr"/>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>место издания/издательство</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QLineEdit" name="place_of_publ"/>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>год издания</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <widget class="QLineEdit" name="year_of_publ"/>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>вид представления</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <widget class="QComboBox" name="view_type"/>
+     </item>
+     <item row="15" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>количество страниц/листов</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <widget class="QLineEdit" name="num_of_pages"/>
+     </item>
+     <item row="16" column="0">
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>начало наблюдений</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <widget class="QLineEdit" name="start_of_obs"/>
+     </item>
+     <item row="17" column="0">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>конец наблюдений</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="1">
+      <widget class="QLineEdit" name="end_of_obs"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>20</y>
+      <width>318</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>район наблюдений</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="obs_area"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>том</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="volume"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_20">
+       <property name="text">
+        <string>выпуск</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="realease"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>серия</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="series"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>часть</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="part"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="text">
+        <string>доступ</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="access">
+       <item>
+        <property name="text">
+         <string>Открытый</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Закрытый</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_24">
+       <property name="text">
+        <string>способ получения</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QComboBox" name="product_method">
+       <item>
+        <property name="text">
+         <string>Платный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Бесплатный</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_28">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>470</y>
+      <width>251</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>* - поля, обязательные для заполнения</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="add_db">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>330</y>
+      <width>309</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Добавить в базу данных</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
