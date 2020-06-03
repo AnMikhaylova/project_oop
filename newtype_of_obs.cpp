@@ -8,11 +8,15 @@ newtype_of_obs::newtype_of_obs(QWidget *parent) :
     ui(new Ui::newtype_of_obs)
 {
     ui->setupUi(this);
+    ui->comboBox->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
     QSqlQuery query;
     query.exec("SELECT * FROM disciplines");
+    int i = 0;
     while (query.next())
     {
     ui->comboBox->addItem(query.value(1).toString());
+    ui->comboBox->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
+    i++;
     }
     ui->pushButton_2->setShortcut(Qt::Key_Return);
 }

@@ -7,11 +7,16 @@ NewOption::NewOption(QWidget *parent) :
     ui(new Ui::NewOption)
 {
     ui->setupUi(this);
+    ui->comboBox_discipline->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+    ui->comboBox_obs->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
     QSqlQuery query;
     query.exec("SELECT * FROM disciplines");
+    int i = 0;
     while (query.next())
     {
     ui->comboBox_discipline->addItem(query.value(1).toString());
+    ui->comboBox_discipline->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
+    i++;
     }
     ui->pushButton_2->setShortcut(Qt::Key_Return);
 }
@@ -54,9 +59,12 @@ void NewOption::on_discipline_clicked()
 
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +discip_id+ "");
     ui->comboBox_obs->clear();
+    int i = 0;
     while (query.next())
     {
         ui->comboBox_obs->addItem(query.value(2).toString());
+        ui->comboBox_obs->setItemData(i, query.value(2).toString(), Qt::ToolTipRole);
+        i++;
 
     }
 

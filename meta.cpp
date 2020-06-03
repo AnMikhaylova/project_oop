@@ -11,9 +11,12 @@ Meta::Meta(QWidget *parent, QString name) :
         query.exec("SELECT invent_num FROM meta");
     else
         query.exec("SELECT invent_num FROM meta WHERE oper_name = '" + user_name+ "'");
+    int i = 0;
     while (query.next())
     {
         ui->comboBox_meta->addItem(query.value(0).toString());
+        ui->comboBox_meta->setItemData(i, query.value(0).toString(), Qt::ToolTipRole);
+        i++;
     }
 }
 
@@ -42,6 +45,9 @@ void Meta::on_pushButton_delete_clicked()
 
 void Meta::on_pushButton_choose_clicked()
 {
+    ui->pushButton_edit->setEnabled(true);
+     ui->pushButton_delete->setEnabled(true);
+
     delete_meta = ui->comboBox_meta->currentText();
     ui->listWidget_meta->clear();
     QSqlQuery query;
