@@ -33,12 +33,12 @@ void Meta::on_pushButton_delete_clicked()
     query.addBindValue(delete_meta);
     if (!query.exec())
     {
-        QMessageBox::warning(this, "Error", query.lastError().text());
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
     else
     {
 
-        QMessageBox::information(this, "OK", "Successfull!");
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Мета-описание успешно удалено"));
     }
 
 }
@@ -196,14 +196,6 @@ void Meta::on_pushButton_choose_clicked()
         NewMeta->set_last_modif_date(query.value(26).toString());
 
         NewMeta->set_directory(query.value(27).toString());
-//        NewMeta = new ClassMeta(query.value(0).toString(), query.value(1).toString(),query.value(2).toString(),
-//                                query.value(3).toString(),d,query2.value(0).toString(),query3.value(0).toString(),
-//                                query.value(7).toString(),query.value(8).toString(),query4.value(0).toString(),query5.value(0).toString(),
-//                                query.value(11).toString(),query.value(12).toString(),query6.value(0).toString(),query.value(14).toString(),
-//                                query.value(15).toString(),query.value(16).toString(),query.value(17).toString(),query.value(18).toString(),
-//                                query.value(19).toString(),query.value(20).toString(),query.value(21).toString(),query.value(22).toString(),
-//                                query.value(23).toString(),query.value(24).toString(),query.value(25).toString(),query.value(26).toString(),
-//                                query.value(27).toString());
 
     }
 

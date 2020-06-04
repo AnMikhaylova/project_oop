@@ -10,28 +10,48 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
 
     QSqlQuery query;
     query.exec("SELECT * FROM disciplines");
+    int i = 0;
     while (query.next())
     {
     ui->discip->addItem(query.value(1).toString());
+    ui->discip->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
+    i++;
     }
 
     query.exec("SELECT * FROM publication_languages");
+    int j = 0;
     while (query.next())
     {
     ui->publ_lng->addItem(query.value(1).toString());
+    ui->publ_lng->setItemData(j, query.value(1).toString(), Qt::ToolTipRole);
+    j++;
     }
 
     query.exec("SELECT * FROM country");
+    int k = 0;
     while (query.next())
     {
     ui->cntr->addItem(query.value(1).toString());
+    ui->cntr->setItemData(k, query.value(1).toString(), Qt::ToolTipRole);
+    k++;
     }
 
     query.exec("SELECT * FROM view_type");
+    int m = 0;
     while (query.next())
     {
     ui->view_type->addItem(query.value(1).toString());
+    ui->view_type->setItemData(m, query.value(1).toString(), Qt::ToolTipRole);
+    m++;
+
     }
+
+    ui->access->setItemData(0,QString::fromLocal8Bit("Открытый"),Qt::ToolTipRole);
+    ui->access->setItemData(1,QString::fromLocal8Bit("Закрытый"),Qt::ToolTipRole);
+
+    ui->product_method->setItemData(0,QString::fromLocal8Bit("Платный"),Qt::ToolTipRole);
+    ui->product_method->setItemData(1,QString::fromLocal8Bit("Бесплатный"),Qt::ToolTipRole);
+
 
     ui->udc->setText(MetaObj->get_udc());
     ui->invent_num->setText(MetaObj->get_invent_num());
@@ -48,9 +68,12 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
     }
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +d_id+ "");
     ui->type_of_obs->clear();
+    int l = 0;
     while (query.next())
     {
-        ui->type_of_obs->addItem(query.value(2).toString());
+        ui->type_of_obs->addItem(query.value(2).toString());        
+        ui->type_of_obs->setItemData(l, query.value(2).toString(), Qt::ToolTipRole);
+        l++;
 
     }
     int obs_index =  ui->type_of_obs->findText(MetaObj->get_type_of_obs());
@@ -63,9 +86,13 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
     obs_id = query.value(0).toString();
     }
     query.exec("SELECT * FROM options WHERE obs_id =" +obs_id+ "");
+    int n = 0;
     while (query.next())
     {
-        ui->option->addItem(query.value(2).toString());
+        ui->option->addItem(query.value(2).toString());        
+        ui->option->setItemData(n, query.value(2).toString(), Qt::ToolTipRole);
+        n++;
+
 
     }
     int op_index =  ui->option->findText(MetaObj->get_option());
@@ -101,6 +128,8 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
     int prod_index =  ui->product_method->findText(MetaObj->get_prod_method());
     ui->product_method->setCurrentIndex(prod_index);
 
+     ui->add_db->setShortcut(Qt::Key_Return);
+
 }
 
 EditMeta::~EditMeta()
@@ -132,9 +161,12 @@ void EditMeta::on_pushButton_discip_clicked()
 
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +d_id+ "");
     ui->type_of_obs->clear();
+    int i = 0;
     while (query.next())
     {
         ui->type_of_obs->addItem(query.value(2).toString());
+        ui->type_of_obs->setItemData(i, query.value(2).toString(), Qt::ToolTipRole);
+        i++;
 
     }
 
@@ -152,9 +184,12 @@ void EditMeta::on_pushButton_obs_clicked()
 
     query.exec("SELECT * FROM options WHERE obs_id =" +obs_id+ "");
     ui->option->clear();
+    int i = 0;
     while (query.next())
     {
         ui->option->addItem(query.value(2).toString());
+        ui->option->setItemData(i, query.value(2).toString(), Qt::ToolTipRole);
+        i++;
 
     }
 }
@@ -226,12 +261,12 @@ void EditMeta::on_add_db_clicked()
 
     if (!query1.exec())
     {
-        QMessageBox::warning(this, "Error", query1.lastError().text());
+        QMessageBox::warning(this,QString::fromLocal8Bit("Ошибка"), query1.lastError().text());
     }
     else
     {
 
-         QMessageBox::information(this, "OK", "Successfull edited!");
+         QMessageBox::information(this, QString::fromLocal8Bit("OK"), "Мета-описание успешно изменено");
     }
 
 }

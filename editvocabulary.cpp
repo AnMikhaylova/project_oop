@@ -102,12 +102,12 @@ void EditVocabulary::on_discipline_change_clicked()
     query.addBindValue(discip_id);
     if (!query.exec())
     {
-        QMessageBox::warning(this, "Error", query.lastError().text());
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
     else
     {
 
-        QMessageBox::information(this, "OK", "Successfull!");
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Дисциплина успешно изменена"));
     }
 
 }
@@ -121,12 +121,12 @@ void EditVocabulary::on_obs_change_clicked()
     query.addBindValue(obs_id);
     if (!query.exec())
     {
-        QMessageBox::warning(this, "Error", query.lastError().text());
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
     else
     {
 
-        QMessageBox::information(this, "OK", "Successfull!");
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Вид наблюдения успешно изменён"));
     }
 }
 
@@ -139,12 +139,12 @@ void EditVocabulary::on_op_change_clicked()
     query.addBindValue(op_id);
     if (!query.exec())
     {
-        QMessageBox::warning(this, "Error", query.lastError().text());
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
     else
     {
 
-        QMessageBox::information(this, "OK", "Successfull!");
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Параметр успешно изменён"));
     }
 
 }

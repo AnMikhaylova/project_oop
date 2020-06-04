@@ -9,28 +9,49 @@ NewMeta::NewMeta(QWidget *parent, QString name) :
     ui->setupUi(this);
     QSqlQuery query;
     query.exec("SELECT * FROM disciplines");
+    int i = 0;
     while (query.next())
     {
     ui->discip->addItem(query.value(1).toString());
+    ui->discip->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
+    i++;
     }
 
     query.exec("SELECT * FROM publication_languages");
+    int j = 0;
     while (query.next())
     {
     ui->publ_lng->addItem(query.value(1).toString());
+    ui->publ_lng->setItemData(j, query.value(1).toString(), Qt::ToolTipRole);
+    j++;
     }
 
     query.exec("SELECT * FROM country");
+    int k = 0;
     while (query.next())
     {
     ui->cntr->addItem(query.value(1).toString());
+    ui->cntr->setItemData(k, query.value(1).toString(), Qt::ToolTipRole);
+    k++;
     }
 
     query.exec("SELECT * FROM view_type");
+    int m = 0;
     while (query.next())
     {
     ui->view_type->addItem(query.value(1).toString());
+    ui->view_type->setItemData(m, query.value(1).toString(), Qt::ToolTipRole);
+    m++;
+
     }
+
+    ui->access->setItemData(0,QString::fromLocal8Bit("Открытый"),Qt::ToolTipRole);
+    ui->access->setItemData(1,QString::fromLocal8Bit("Закрытый"),Qt::ToolTipRole);
+
+    ui->product_method->setItemData(0,QString::fromLocal8Bit("Платный"),Qt::ToolTipRole);
+    ui->product_method->setItemData(1,QString::fromLocal8Bit("Бесплатный"),Qt::ToolTipRole);
+
+    ui->add_db->setShortcut(Qt::Key_Return);
 
 
 
@@ -53,9 +74,12 @@ void NewMeta::on_pushButton_discip_clicked()
 
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +d_id+ "");
     ui->type_of_obs->clear();
+    int i = 0;
     while (query.next())
     {
         ui->type_of_obs->addItem(query.value(2).toString());
+        ui->type_of_obs->setItemData(i, query.value(2).toString(), Qt::ToolTipRole);
+        i++;
 
     }
 }
@@ -72,9 +96,13 @@ void NewMeta::on_pushButton_obs_clicked()
     }
 
     query.exec("SELECT * FROM options WHERE obs_id =" +obs_id+ "");
+    ui->option->clear();
+    int i = 0;
     while (query.next())
     {
         ui->option->addItem(query.value(2).toString());
+        ui->option->setItemData(i, query.value(2).toString(), Qt::ToolTipRole);
+        i++;
 
     }
 
@@ -131,6 +159,14 @@ void NewMeta::on_add_db_clicked()
     last_modif_date = this->currentDate();
     directory = "A:/work directory";
 
+    if (ui->invent_num->text() == "" || d_id == "" || obs_id == "" || op_id == "")
+    {
+         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Проверьте заполнение обязательных полей"));
+
+    }
+    else
+    {
+
     QSqlQuery query1;
     query1.prepare("INSERT INTO meta (udc, invent_num, title_of_the_book, discipline, type_of_obs, option, copyright_mark, "
                    "authors, publ_language, country, place_of_publ, year_of_publ, view_type, num_of_pages, start_of_obs, "
@@ -167,26 +203,29 @@ void NewMeta::on_add_db_clicked()
     QFileInfo fileInfo(file);
     directory = QString("A:/work directory/") + fileInfo.fileName();
 
-    bool open = QFile::copy(file, directory);
-    if (!open)
+    bool copy = QFile::copy(file, directory);
+    if (!copy)
     {
-        QMessageBox::warning(this, "Error", "Could not copy file");
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Невозможно скопировать файл"));
     }
     else
     {
 
-         QMessageBox::information(this, "OK", "Successfull copy!");
+         QMessageBox::information(this, "OK", QString::fromLocal8Bit("Файл успешно скопирован"));
+
+         if (!query1.exec())
+         {
+             QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query1.lastError().text());
+             QFile::remove(directory);
+         }
+         else
+         {
+
+              QMessageBox::information(this, "OK", QString::fromLocal8Bit("Мета-описание успешно добавлено"));
+         }
+
     }
 
-
-    if (!query1.exec())
-    {
-        QMessageBox::warning(this, "Error", query1.lastError().text());
-    }
-    else
-    {
-
-         QMessageBox::information(this, "OK", "Successfull add!");
     }
 
 
@@ -204,13 +243,14 @@ void NewMeta::on_choose_clicked()
         QFile file(fileName);
         if (!file.open(QIODevice::ReadOnly))
         {
-            QMessageBox::critical(this, "Error", "Could not open file");
+            QMessageBox::critical(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Невозможно открыть файл"));
         }
         else
         {
-            QMessageBox::information(this, "OK", "Successfull open!");
+            QMessageBox::information(this, "OK", QString::fromLocal8Bit("Файл успешно открыт"));
             ui->label_directory->setText(fileName);
             this->file = fileName;
+            ui->add_db->setEnabled(true);
 
         }
     }

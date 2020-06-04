@@ -34,12 +34,12 @@ void NewDiscipline::on_pushButton_clicked()
 
     if (!query.exec())
     {
-        QMessageBox::warning(this, "Error", query.lastError().text());
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
     else
     {
 
-        QMessageBox::information(this, "OK", "Successfull!");
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Новая дисциплина успешно добавлена"));
     }
 
 }

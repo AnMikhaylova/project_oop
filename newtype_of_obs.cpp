@@ -28,26 +28,6 @@ newtype_of_obs::~newtype_of_obs()
 
 
 
-void newtype_of_obs::on_pushButton_2_clicked()
-{
-
-
-    QSqlQuery query;
-    QString obs_name = ui->type_of_obs->text();
-    query.prepare("INSERT INTO types_of_observations (d_id, obs_name) VALUES (?, ?)");
-    query.addBindValue(d_id);
-    query.addBindValue(obs_name);
-    if (!query.exec())
-    {
-        QMessageBox::warning(this, "Error", query.lastError().text());
-    }
-    else
-    {
-
-        QMessageBox::information(this, "OK", "Successfull!");
-    }
-}
-
 void newtype_of_obs::on_pushButton_clicked()
 {
     ui->listWidget->clear();
@@ -64,5 +44,25 @@ void newtype_of_obs::on_pushButton_clicked()
     {
         ui->listWidget->addItem(query.value(2).toString());
 
+    }
+}
+
+void newtype_of_obs::on_pushButton_2_clicked()
+{
+
+
+    QSqlQuery query;
+    QString obs_name = ui->type_of_obs->text();
+    query.prepare("INSERT INTO types_of_observations (d_id, obs_name) VALUES (?, ?)");
+    query.addBindValue(d_id);
+    query.addBindValue(obs_name);
+    if (!query.exec())
+    {
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
+    }
+    else
+    {
+
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Новый вид наблюдения успешно добавлен"));
     }
 }

@@ -27,25 +27,6 @@ NewOption::~NewOption()
 }
 
 
-
-void NewOption::on_pushButton_2_clicked()
-{
-    QSqlQuery query;
-    QString op_name = ui->option->text();
-    query.prepare("INSERT INTO options (obs_id, op_name) VALUES (?, ?)");
-    query.addBindValue(obs_id);
-    query.addBindValue(op_name);
-    if (!query.exec())
-    {
-        QMessageBox::warning(this, "Error", query.lastError().text());
-    }
-    else
-    {
-
-        QMessageBox::information(this, "OK", "Successfull!");
-    }
-}
-
 void NewOption::on_discipline_clicked()
 {
     QSqlQuery query;
@@ -86,5 +67,23 @@ void NewOption::on_obs_clicked()
     {
         ui->listWidget->addItem(query.value(2).toString());
 
+    }
+}
+
+void NewOption::on_pushButton_2_clicked()
+{
+    QSqlQuery query;
+    QString op_name = ui->option->text();
+    query.prepare("INSERT INTO options (obs_id, op_name) VALUES (?, ?)");
+    query.addBindValue(obs_id);
+    query.addBindValue(op_name);
+    if (!query.exec())
+    {
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
+    }
+    else
+    {
+
+        QMessageBox::information(this, "OK", QString::fromLocal8Bit("Новый параметр успешно добавлен"));
     }
 }

@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     if (!db.open())
     {
-        QMessageBox::warning(this, "Error", db.lastError().text());
+        QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), db.lastError().text());
         exit(2);
     }
     QMessageBox::information(this, "OK", QString::fromLocal8Bit("PostgreSQL успешно подключен!"));
@@ -28,11 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-QString MainWindow::get_username() const
-{
-    return user_name;
 }
 
 

@@ -360,6 +360,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="add_db">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Добавить в базу данных</string>
        </property>
