@@ -7,7 +7,9 @@ NewMeta::NewMeta(QWidget *parent, QString name) :
     ui(new Ui::NewMeta)
 {
     ui->setupUi(this);
+    /*------------Добавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки------------*/
     QSqlQuery query;
+    //дисциплина
     query.exec("SELECT * FROM disciplines");
     int i = 0;
     while (query.next())
@@ -16,6 +18,7 @@ NewMeta::NewMeta(QWidget *parent, QString name) :
     ui->discip->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
     i++;
     }
+    //язык издания
 
     query.exec("SELECT * FROM publication_languages");
     int j = 0;
@@ -26,6 +29,7 @@ NewMeta::NewMeta(QWidget *parent, QString name) :
     j++;
     }
 
+    //страна
     query.exec("SELECT * FROM country");
     int k = 0;
     while (query.next())
@@ -35,6 +39,7 @@ NewMeta::NewMeta(QWidget *parent, QString name) :
     k++;
     }
 
+    //вид представления
     query.exec("SELECT * FROM view_type");
     int m = 0;
     while (query.next())
@@ -45,12 +50,15 @@ NewMeta::NewMeta(QWidget *parent, QString name) :
 
     }
 
+    //доступ
     ui->access->setItemData(0,QString::fromLocal8Bit("Открытый"),Qt::ToolTipRole);
     ui->access->setItemData(1,QString::fromLocal8Bit("Закрытый"),Qt::ToolTipRole);
 
+    //способ получения
     ui->product_method->setItemData(0,QString::fromLocal8Bit("Платный"),Qt::ToolTipRole);
     ui->product_method->setItemData(1,QString::fromLocal8Bit("Бесплатный"),Qt::ToolTipRole);
 
+    //установка горячей клавиши для кнопки добавления в базу данных
     ui->add_db->setShortcut(Qt::Key_Return);
 
 
@@ -62,6 +70,7 @@ NewMeta::~NewMeta()
     delete ui;
 }
 
+//слот для обработки нажатия на кнопку выбора дисциплины
 void NewMeta::on_pushButton_discip_clicked()
 {
     QSqlQuery query;
@@ -84,6 +93,7 @@ void NewMeta::on_pushButton_discip_clicked()
     }
 }
 
+//слот для обработки нажатия на кнопку выбора вида наблюдения
 void NewMeta::on_pushButton_obs_clicked()
 {
 
@@ -109,6 +119,8 @@ void NewMeta::on_pushButton_obs_clicked()
 
 }
 
+//функция-член, возвращающая текущую дату. тип возвращаемого значения - QString
+
 QString NewMeta::currentDate()
 {
     char buffer[80];
@@ -120,8 +132,10 @@ QString NewMeta::currentDate()
     return date;
 }
 
+//слот для обработки нажатия на кнопку добавления в базу данных
 void NewMeta::on_add_db_clicked()
 {
+    //добавление нвоого мета-описания в базу данных
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251"));
     QString option, lng, cntr, view_type;
     option = ui->option->currentText();
@@ -157,8 +171,10 @@ void NewMeta::on_add_db_clicked()
     prod_method = ui->product_method->currentText();
     meta_creation_date = this->currentDate();
     last_modif_date = this->currentDate();
+    //директория для записи прикрепленного файла
     directory = "A:/work directory";
 
+    //провекрка на пустоту обязательных полей
     if (ui->invent_num->text() == "" || d_id == "" || obs_id == "" || op_id == "")
     {
          QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Проверьте заполнение обязательных полей"));
@@ -203,21 +219,26 @@ void NewMeta::on_add_db_clicked()
     QFileInfo fileInfo(file);
     directory = QString("A:/work directory/") + fileInfo.fileName();
 
+    //копирование выбранного файла
     bool copy = QFile::copy(file, directory);
+    //если операция не выполнена, выводится соответсвующее сообщение
     if (!copy)
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Невозможно скопировать файл"));
     }
     else
     {
+        //при удачном копировании выводится соответсвующее сообщение
 
          QMessageBox::information(this, "OK", QString::fromLocal8Bit("Файл успешно скопирован"));
 
+         //в случае успешно выполнения запроса, выводится соответствующее сообщение
          if (!query1.exec())
          {
              QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query1.lastError().text());
              QFile::remove(directory);
          }
+         //в другом случае, выводится сообщение с содержанием ошибки
          else
          {
 
@@ -231,6 +252,7 @@ void NewMeta::on_add_db_clicked()
 
 }
 
+//слот для обработки нажатия на кнопку выбора прикрепляемого файла
 void NewMeta::on_choose_clicked()
 {
 
@@ -241,13 +263,17 @@ void NewMeta::on_choose_clicked()
     {
 
         QFile file(fileName);
+        //если операция открытия файла не выполнена, выводится соответсвующее сообщение
         if (!file.open(QIODevice::ReadOnly))
         {
             QMessageBox::critical(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Невозможно открыть файл"));
         }
         else
         {
+            //при удачном открытии выводится соответсвующее сообщение
+
             QMessageBox::information(this, "OK", QString::fromLocal8Bit("Файл успешно открыт"));
+            //отображаем путь к файлу в окне и активируем кнопку добавления в базу данных
             ui->label_directory->setText(fileName);
             this->file = fileName;
             ui->add_db->setEnabled(true);

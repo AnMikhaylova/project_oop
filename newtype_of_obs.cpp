@@ -8,7 +8,9 @@ newtype_of_obs::newtype_of_obs(QWidget *parent) :
     ui(new Ui::newtype_of_obs)
 {
     ui->setupUi(this);
+    //установка размеров выпадающих списков
     ui->comboBox->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+    //Добавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки для дисциплины
     QSqlQuery query;
     query.exec("SELECT * FROM disciplines");
     int i = 0;
@@ -18,6 +20,7 @@ newtype_of_obs::newtype_of_obs(QWidget *parent) :
     ui->comboBox->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
     i++;
     }
+    //установка горячей клавиши для кнопки добавления вида наблюдения
     ui->pushButton_2->setShortcut(Qt::Key_Return);
 }
 
@@ -27,9 +30,10 @@ newtype_of_obs::~newtype_of_obs()
 }
 
 
-
+//слот для обработки нажатия на кнопку выбора дисциплины
 void newtype_of_obs::on_pushButton_clicked()
 {
+    //поиск соответсвующего id для дисциплины
     ui->listWidget->clear();
     QString discip = ui->comboBox->currentText();
     QSqlQuery query;
@@ -39,6 +43,7 @@ void newtype_of_obs::on_pushButton_clicked()
     d_id = query.value(0).toString();
     }
 
+    //вывод в окно информации об имеющихся видах наблюдения для выбранной дисциплины
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +d_id+ "");
     while (query.next())
     {
@@ -47,19 +52,21 @@ void newtype_of_obs::on_pushButton_clicked()
     }
 }
 
+
+//слот для обработки нажатия на кнопку добавления вида наблюдения
 void newtype_of_obs::on_pushButton_2_clicked()
 {
-
-
     QSqlQuery query;
     QString obs_name = ui->type_of_obs->text();
     query.prepare("INSERT INTO types_of_observations (d_id, obs_name) VALUES (?, ?)");
     query.addBindValue(d_id);
     query.addBindValue(obs_name);
+    //в случае неудачного запроса,выводится сообщение с содержанием ошибки
     if (!query.exec())
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
+    //в случае успешного выполнения запроса, выводится соответствующее сообщение
     else
     {
 

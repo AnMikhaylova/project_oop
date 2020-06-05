@@ -6,11 +6,13 @@ Meta::Meta(QWidget *parent, QString name) :
     ui(new Ui::Meta)
 {
     ui->setupUi(this);
+    //выборка инвентарных номеров мета-описаний в соответствии с ролью пользователя
     QSqlQuery query;
     if (user_name == "admin")
-        query.exec("SELECT invent_num FROM meta");
+        query.exec("SELECT invent_num FROM meta"); //выборка всех инвентарных номеров для администратора
     else
-        query.exec("SELECT invent_num FROM meta WHERE oper_name = '" + user_name+ "'");
+        query.exec("SELECT invent_num FROM meta WHERE oper_name = '" + user_name+ "'"); //выборка инвентарных номеров
+    //в соответствии с именем пользователя дляоператора
     int i = 0;
     while (query.next())
     {
@@ -25,16 +27,19 @@ Meta::~Meta()
     delete ui;
 }
 
+//слот для обработки нажатия на кнопку удаления мета-описания
 void Meta::on_pushButton_delete_clicked()
 {
 
     QSqlQuery query;
     query.prepare("DELETE FROM meta WHERE invent_num = ?");
     query.addBindValue(delete_meta);
+    //в случае успешно выполнения запроса, выводится соответствующее сообщение
     if (!query.exec())
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
+    //в другом случае, выводится сообщение с содержанием ошибки
     else
     {
 
@@ -43,8 +48,11 @@ void Meta::on_pushButton_delete_clicked()
 
 }
 
+//слот для обработки нажатия на кнопку выбора мета-описания
 void Meta::on_pushButton_choose_clicked()
 {
+    //на экран выводится вся информация о мета-описании
+    //это такие поля, как удк, инвентарный номер, название книги, дисциплина и пр.
     ui->pushButton_edit->setEnabled(true);
      ui->pushButton_delete->setEnabled(true);
 
@@ -201,10 +209,13 @@ void Meta::on_pushButton_choose_clicked()
 
 }
 
+//слот для обработки нажатия на кнопку изменения мета-описания
 void Meta::on_pushButton_edit_clicked()
 {
+    //открывается окно редактирования мета-описания, в которое передается имя пользователя и информация о выбранном мета-описании
     windowEditMeta = new EditMeta(nullptr, NewMeta);
     windowEditMeta->setWindowTitle(QString::fromLocal8Bit("Редактирование мета-описания"));
+    windowEditMeta->setWindowFlags(windowEditMeta->windowFlags() & ~Qt::WindowContextHelpButtonHint);
     windowEditMeta->setModal(true);
     windowEditMeta->exec();
 }

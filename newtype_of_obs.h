@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "sql.h"
 
+//Окно добавления нового вида наблюдения
+
 namespace Ui {
 class newtype_of_obs;
 }
@@ -19,11 +21,14 @@ public:
 private slots:
 
 
+    //слот для обработки нажатия на кнопку добавления вида наблюдения
     void on_pushButton_2_clicked();
 
+    //слот для обработки нажатия на кнопку выбора дисциплины
     void on_pushButton_clicked();
 
 private:
+    //строка для хранения id выбранной дисциплины
     QString d_id;
     Ui::newtype_of_obs *ui;
 };

@@ -8,6 +8,8 @@
 #include <QMessageBox>
 #include "md5.h"
 
+//Окно добавлениянвого оператора
+
 namespace Ui {
 class NewOperator;
 }
@@ -21,6 +23,7 @@ public:
     ~NewOperator();
 
 private slots:
+    //слот для обработки нажатия на кнопку добавления оператора
     void on_pushButton_clicked();
 
 private:

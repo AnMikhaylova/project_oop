@@ -8,7 +8,9 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
 {
     ui->setupUi(this);
 
+    /*------------Добавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки------------*/
     QSqlQuery query;
+    //дисциплина
     query.exec("SELECT * FROM disciplines");
     int i = 0;
     while (query.next())
@@ -18,6 +20,7 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
     i++;
     }
 
+    //язык издания
     query.exec("SELECT * FROM publication_languages");
     int j = 0;
     while (query.next())
@@ -27,6 +30,7 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
     j++;
     }
 
+    //страна
     query.exec("SELECT * FROM country");
     int k = 0;
     while (query.next())
@@ -36,6 +40,7 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
     k++;
     }
 
+    //вид представления
     query.exec("SELECT * FROM view_type");
     int m = 0;
     while (query.next())
@@ -46,13 +51,16 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
 
     }
 
+    //доступ
     ui->access->setItemData(0,QString::fromLocal8Bit("Открытый"),Qt::ToolTipRole);
     ui->access->setItemData(1,QString::fromLocal8Bit("Закрытый"),Qt::ToolTipRole);
 
+    //способ получения
     ui->product_method->setItemData(0,QString::fromLocal8Bit("Платный"),Qt::ToolTipRole);
     ui->product_method->setItemData(1,QString::fromLocal8Bit("Бесплатный"),Qt::ToolTipRole);
 
 
+    /*------------Заполненеие полей данными, которые соотсветсвуют данным переданного мета-описания------------*/
     ui->udc->setText(MetaObj->get_udc());
     ui->invent_num->setText(MetaObj->get_invent_num());
     ui->title->setText(MetaObj->get_title());
@@ -127,8 +135,8 @@ EditMeta::EditMeta(QWidget *parent, ClassMeta *SomeMeta) :
 
     int prod_index =  ui->product_method->findText(MetaObj->get_prod_method());
     ui->product_method->setCurrentIndex(prod_index);
-
-     ui->add_db->setShortcut(Qt::Key_Return);
+    //установка горячей клавиши для кнопки "добавить в базу данных"
+    ui->add_db->setShortcut(Qt::Key_Return);
 
 }
 
@@ -137,6 +145,7 @@ EditMeta::~EditMeta()
     delete ui;
 }
 
+//функция-член, возвращающая текущую дату. тип возвращаемого значения - QString
 QString EditMeta::currentDate()
 {
     char buffer[80];
@@ -148,7 +157,7 @@ QString EditMeta::currentDate()
     return date;
 }
 
-
+//слот для обработки нажатия на кнопку выбора дисциплины
 void EditMeta::on_pushButton_discip_clicked()
 {
     QSqlQuery query;
@@ -172,6 +181,7 @@ void EditMeta::on_pushButton_discip_clicked()
 
 }
 
+//слот для обработки нажатия на кнопку выбора вида наблюдения
 void EditMeta::on_pushButton_obs_clicked()
 {
     QString obs = ui->type_of_obs->currentText();
@@ -194,6 +204,7 @@ void EditMeta::on_pushButton_obs_clicked()
     }
 }
 
+//слот для обработки нажатия на кнопку добавления в базу данных
 void EditMeta::on_add_db_clicked()
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251"));
@@ -259,14 +270,16 @@ void EditMeta::on_add_db_clicked()
     query1.addBindValue(this->currentDate());
     query1.addBindValue(MetaObj->get_id());
 
+    //в случае успешно выполнения запроса, выводится соответствующее сообщение
     if (!query1.exec())
     {
         QMessageBox::warning(this,QString::fromLocal8Bit("Ошибка"), query1.lastError().text());
     }
+    //в другом случае, выводится сообщение с содержанием ошибки
     else
     {
 
-         QMessageBox::information(this, QString::fromLocal8Bit("OK"), "Мета-описание успешно изменено");
+         QMessageBox::information(this, QString::fromLocal8Bit("OK"), QString::fromLocal8Bit("Мета-описание успешно изменено"));
     }
 
 }

@@ -5,6 +5,8 @@
 #include <QTextCodec>
 #include "sql.h"
 
+//окно добавлени€ новой дисциплины
+
 namespace Ui {
 class NewDiscipline;
 }
@@ -18,6 +20,7 @@ public:
     ~NewDiscipline();
 
 private slots:
+    //слот дл€ обработки нажати€ на кнопку добавлени€ в базу данных
     void on_pushButton_clicked();
 
 private:

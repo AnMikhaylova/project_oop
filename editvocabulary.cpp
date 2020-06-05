@@ -8,9 +8,11 @@ EditVocabulary::EditVocabulary(QWidget *parent) :
 
     ui->setupUi(this);
     QSqlQuery query;
+    //установка размеров выпадающих списков
     ui->comboBox_discipline->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
     ui->comboBox_obs->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
     ui->comboBox_op->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+    //Добавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки для дисциплины
     query.exec("SELECT * FROM disciplines");
 
     int i = 0;
@@ -28,6 +30,7 @@ EditVocabulary::~EditVocabulary()
     delete ui;
 }
 
+//слот для обработки нажатия на кнопку выбора дисциплины
 void EditVocabulary::on_discipline_clicked()
 {
     ui->comboBox_obs->clear();
@@ -42,6 +45,7 @@ void EditVocabulary::on_discipline_clicked()
 
     ui->textEdit_discipline->setText(discip);
 
+    //Добавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки для вида наблюдения
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +discip_id+ "");
     ui->comboBox_obs->clear();
     int i = 0;
@@ -54,6 +58,8 @@ void EditVocabulary::on_discipline_clicked()
     }
 }
 
+
+//слот для обработки нажатия на кнопку выбора вида наблюдения
 void EditVocabulary::on_obs_clicked()
 {
     ui->comboBox_op->clear();
@@ -67,6 +73,7 @@ void EditVocabulary::on_obs_clicked()
 
     ui->textEdit_obs->setText(obs);
 
+    //Добавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки для парамтера
     query.exec("SELECT * FROM options WHERE obs_id =" +obs_id+ "");
     ui->comboBox_op->clear();
     int i = 0;
@@ -79,6 +86,7 @@ void EditVocabulary::on_obs_clicked()
     }
 }
 
+//слот для обработки нажатия на кнопку выбора параметра
 void EditVocabulary::on_op_clicked()
 {
     QString op = ui->comboBox_op->currentText();
@@ -92,6 +100,7 @@ void EditVocabulary::on_op_clicked()
     ui->textEdit_op->setText(op);
 }
 
+//слот для обработки нажатия на кнопку изменения дисциплины
 void EditVocabulary::on_discipline_change_clicked()
 {
 
@@ -100,10 +109,12 @@ void EditVocabulary::on_discipline_change_clicked()
     query.prepare("UPDATE disciplines SET d_name = ? WHERE d_id = ?");
     query.addBindValue(changed_discip);
     query.addBindValue(discip_id);
+    //в случае успешно выполнения запроса, выводится соответствующее сообщение
     if (!query.exec())
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
+    //в другом случае, выводится сообщение с содержанием ошибки
     else
     {
 
@@ -112,6 +123,7 @@ void EditVocabulary::on_discipline_change_clicked()
 
 }
 
+//слот для обработки нажатия на кнопку изменения вида наблюдения
 void EditVocabulary::on_obs_change_clicked()
 {
     QString changed_obs = ui->textEdit_obs->toPlainText();
@@ -119,10 +131,12 @@ void EditVocabulary::on_obs_change_clicked()
     query.prepare("UPDATE types_of_observations SET obs_name = ? WHERE obs_id = ?");
     query.addBindValue(changed_obs);
     query.addBindValue(obs_id);
+    //в случае успешно выполнения запроса, выводится соответствующее сообщение
     if (!query.exec())
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
+    //в другом случае, выводится сообщение с содержанием ошибки
     else
     {
 
@@ -130,6 +144,8 @@ void EditVocabulary::on_obs_change_clicked()
     }
 }
 
+
+//слот для обработки нажатия на кнопку изменения параметра
 void EditVocabulary::on_op_change_clicked()
 {
     QString changed_op = ui->textEdit_op->toPlainText();
@@ -137,10 +153,12 @@ void EditVocabulary::on_op_change_clicked()
     query.prepare("UPDATE options SET op_name = ? WHERE op_id = ?");
     query.addBindValue(changed_op);
     query.addBindValue(op_id);
+    //в случае успешно выполнения запроса, выводится соответствующее сообщение
     if (!query.exec())
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("Ошибка"), query.lastError().text());
     }
+    //в другом случае, выводится сообщение с содержанием ошибки
     else
     {
 

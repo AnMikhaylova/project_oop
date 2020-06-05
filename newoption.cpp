@@ -7,8 +7,10 @@ NewOption::NewOption(QWidget *parent) :
     ui(new Ui::NewOption)
 {
     ui->setupUi(this);
+    //установка размеров выпадающих списков
     ui->comboBox_discipline->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
     ui->comboBox_obs->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+    //ƒобавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки дл€ дисциплины
     QSqlQuery query;
     query.exec("SELECT * FROM disciplines");
     int i = 0;
@@ -18,6 +20,7 @@ NewOption::NewOption(QWidget *parent) :
     ui->comboBox_discipline->setItemData(i, query.value(1).toString(), Qt::ToolTipRole);
     i++;
     }
+    //установка гор€чей клавиши дл€ кнопки добавлени€ параметра
     ui->pushButton_2->setShortcut(Qt::Key_Return);
 }
 
@@ -27,8 +30,11 @@ NewOption::~NewOption()
 }
 
 
+//слот дл€ обработки нажати€ на кнопку выбора дисциплины
+
 void NewOption::on_discipline_clicked()
 {
+    //поиск соответсвующего id дл€ дисциплины
     QSqlQuery query;
     QString discip_id;
     QString discip = ui->comboBox_discipline->currentText();
@@ -38,6 +44,7 @@ void NewOption::on_discipline_clicked()
     discip_id = query.value(0).toString();
     }
 
+    //ƒобавление соотвествующих полей и всплывающих подсказок к ним в выпадающие списки дл€ вида наблюдени€ по id дисциплины
     query.exec("SELECT * FROM types_of_observations WHERE d_id =" +discip_id+ "");
     ui->comboBox_obs->clear();
     int i = 0;
@@ -51,8 +58,11 @@ void NewOption::on_discipline_clicked()
 
 }
 
+
+//слот дл€ обработки нажати€ на кнопку выбора вида наблюдени€
 void NewOption::on_obs_clicked()
 {
+    //поиск соответсвующего id дл€ вида наблюдени€
     ui->listWidget->clear();
     QString obs = ui->comboBox_obs->currentText();
     QSqlQuery query;
@@ -62,6 +72,7 @@ void NewOption::on_obs_clicked()
     obs_id = query.value(0).toString();
     }
 
+    //вывод в окно информации об имеющихс€ параметрах дл€ выбранного вида наблюдени€
     query.exec("SELECT * FROM options WHERE obs_id =" +obs_id+ "");
     while (query.next())
     {
@@ -70,6 +81,7 @@ void NewOption::on_obs_clicked()
     }
 }
 
+//слот дл€ обработки нажати€ на кнопку добавлени€ параметра
 void NewOption::on_pushButton_2_clicked()
 {
     QSqlQuery query;
@@ -77,12 +89,15 @@ void NewOption::on_pushButton_2_clicked()
     query.prepare("INSERT INTO options (obs_id, op_name) VALUES (?, ?)");
     query.addBindValue(obs_id);
     query.addBindValue(op_name);
+     //в случае неудачного запроса,выводитс€ сообщение с содержанием ошибки
     if (!query.exec())
     {
         QMessageBox::warning(this, QString::fromLocal8Bit("ќшибка"), query.lastError().text());
     }
+    //в случае успешного выполнени€ запроса, выводитс€ соответствующее сообщение
     else
     {
+
 
         QMessageBox::information(this, "OK", QString::fromLocal8Bit("Ќовый параметр успешно добавлен"));
     }
